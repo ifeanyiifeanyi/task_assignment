@@ -59,7 +59,8 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function(){
 
         Route::get('active/tasks', 'index')->name('admin.active.task');
         Route::get('all/tasks', 'allTasks')->name('admin.all.task');
-        Route::get('tasks/{$userId}', 'getUserActiveTask')->name('admin.user.task');
+        Route::get('active/user/task/{taskId}', 'activeUserTask')->name('admin.user.activeTask');
+        Route::get('edit/active/task/{taskId}', 'edit')->name('admin.user.editActiveTask');
 
     });
 

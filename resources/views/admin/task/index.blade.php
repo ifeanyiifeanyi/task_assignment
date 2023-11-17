@@ -37,7 +37,7 @@
                                     <td>{{$task->start_date->format('F j, Y')}}</td>
                                     <td>
                                         <div class="btn-group mr-2" role="group" aria-label="First group">
-                                            <a href="{{route('admin.user.task', $task)}}" class="btn btn-info
+                                            <a href="{{route('admin.user.activeTask', $task)}}" class="btn btn-info
                                             waves-effect
                                             waves-light mr-2 ">
                                                 View
@@ -51,6 +51,11 @@
                                             waves-effect
                                             waves-light mr-2 ">
                                                 Delete
+                                            </a>
+                                            <a href="" class="btn btn-soft-warning
+                                            waves-effect
+                                            waves-light mr-2 ">
+                                                End Assignment
                                             </a>
                                         </div>
                                     </td>

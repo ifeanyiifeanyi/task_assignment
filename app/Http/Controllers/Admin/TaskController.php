@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
+use JetBrains\PhpStorm\NoReturn;
 
 class TaskController extends Controller
 {
@@ -112,11 +113,10 @@ class TaskController extends Controller
         return redirect()->route('admin.member.all')->with($notification);
     }
 
-    public function getUserActiveTask($userId){
-         $user  = User::findOrFail($userId);
-         $tasks = $user->task;
-         dd($tasks);
-         return view('admin.task.show')->with('tasks', $tasks);
+    public function activeUserTask($taskId){
+         $task  = Task::with('user')->findOrFail($taskId);
+//
+         return view('admin.task.show')->with('task', $task);
     }
 
 }
