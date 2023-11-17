@@ -1,6 +1,6 @@
 @extends('admin.layouts.admin')
 
-@section('title', 'Assign member')
+@section('title', 'Edit Assignment Details')
 @section('css')
 
 @endsection
@@ -10,37 +10,14 @@
         <div class="col-lg-8 col-xl-8 mx-auto">
             <div class="card">
                 <div class="card-body">
-                    <form method="post" action="{{route('admin.task.store')}}" enctype="multipart/form-data">
+                    <form method="post" action="{{route('admin.user.updateActiveTask', $task)}}"
+                          enctype="multipart/form-data">
                         @csrf
+                        @method('put')
                         <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i>
-                            @isset($user)
-                            Create new assignment for   <b class="text-bg-blue p-1">{{$user->name}} </b>
-                            @else
-                                Create new Assignment
-                            @endisset
+                                Edit Assignment Details for <small class="text-bg-info p-1">{{$task->user->name}}</small>
                         </h5>
-                        @isset($user)
-                            <input type="hidden" name="user_id" value="{{ $user->id }}">
-                        @else
-                            <!-- If no specific user, show the select tag -->
-                            <div class="row mt-3">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="user_id" class="form-label">Select user</label>
-                                        <select class="form-control @error('user_id')  is-invalid @enderror" id="user_id" name="user_id">
-                                            <option value="" disabled selected>Select user</option>
-                                            @if($users->count())
-                                                @foreach($users as $user)
-                                                    <option value="{{$user->id}}">{{$user->name}}</option>
-                                                @endforeach
-                                            @else
-                                                <option value="member">Members not available</option>
-                                            @endif
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        @endisset
+                            <input type="hidden" name="user_id" value="{{ $task->user_id }}">
 
                         <div class="row">
                             <div class="col-md-12">
@@ -48,7 +25,7 @@
                                     <label for="title" class="form-label">Title</label>
                                     <input type="text" class="form-control @error('title')  is-invalid @enderror"
                                            id="title" placeholder="Assignment title .." name="title" value="{{ old
-                                           ('title') }}">
+                                           ('title', $task->title) }}">
                                     @error('title')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -59,9 +36,10 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="start_date" class="form-label">Start Date</label>
-                                    <input  min="{{ date('Y-m-d', strtotime('tomorrow')) }}" type="date" class="form-control @error('start_date')  is-invalid @enderror"
-                                           id="start_date" placeholder="Start date .." name="start_date" value="">
+                                    <label for="start_date" class="form-label">Start Date </label>
+                                    <input type="date" class="form-control @error('start_date')  is-invalid @enderror"
+                                            id="start_date" placeholder="Start date .." name="start_date"
+                                            value="{{ $task->start_date->format('Y-m-d') }}">
                                     @error('start_date')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -71,7 +49,8 @@
                                 <div class="mb-3">
                                     <label for="end_date" class="form-label">End Date</label>
                                     <input type="date" class="form-control @error('end_date')  is-invalid @enderror"
-                                           id="end_date" placeholder="Stop date .." name="end_date" value="">
+                                           id="end_date" placeholder="Stop date .." name="end_date"
+                                           value="{{ $task->end_date->format('Y-m-d') }}">
                                     @error('end_date')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -84,8 +63,8 @@
                                 <div class="mb-3">
                                     <label for="description" class="form-label">Assignment Description </label>
                                     <textarea  class="form-control @error('description')  is-invalid @enderror"
-                                               id="editor" placeholder="Assignment Description ..." name="description" value="{{
-                                       old('description') }}"></textarea>
+                                              id="editor" placeholder="Assignment Description ..." name="description">{!! e(nl2br($task->description))
+                                       !!}</textarea>
                                     @error('description')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -95,13 +74,33 @@
                         </div> <!-- end row -->
 
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="additional_file" class="form-label">Additional Information (optional)</label>
                                     <input type="file" class="form-control @error('additional_file')  is-invalid @enderror" id="additional_file" name="additional_file">
                                     @error('additional_file')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+
+                                    @if($task->additional_file)
+                                        <label for="" class="form-label">Additional File</label>
+                                        @if(pathinfo($task->additional_file, PATHINFO_EXTENSION)
+                                        === 'pdf')
+                                            <!-- Display PDF -->
+                                            <a href="{{ asset($task->additional_file) }}" target="_blank">View PDF</a>
+                                        @else
+                                            <!-- Display Image -->
+                                            <a href="{{ asset($task->additional_file) }}" download>
+                                                <img src="{{ asset($task->additional_file) }}" alt="Additional File" class="img-fluid">
+                                            </a>
+                                        @endif
+                                    @else
+                                        <label for="" class="form-label">No additional file</label>
+                                    @endif
                                 </div>
                             </div>
 

@@ -61,7 +61,7 @@
                                                 </tr>
                                                 <tr>
                                                     <th class="text-primary">Description: </th>
-                                                    <td>{!! e(nl2br($task->description)) !!}</td>
+                                                    <td>{!! nl2br($task->description) !!}</td>
                                                 </tr>
                                                 <tr>
                                                     <th class="text-primary">Start Date: </th>

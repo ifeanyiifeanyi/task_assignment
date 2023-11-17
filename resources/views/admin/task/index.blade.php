@@ -42,7 +42,8 @@
                                             waves-light mr-2 ">
                                                 View
                                             </a>
-                                            <a href="" class="btn btn-primary
+                                            <a href="{{route('admin.user.editActiveTask', $task)}}" class="btn
+                                            btn-primary
                                             waves-effect
                                             waves-light mr-2 ">
                                                 Edit

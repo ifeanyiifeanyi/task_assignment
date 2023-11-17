@@ -110,13 +110,51 @@ class TaskController extends Controller
         ]);
 
         $notification = $this->generateNotification('Assignment successfully created.', 'success');
-        return redirect()->route('admin.member.all')->with($notification);
+        return redirect()->route('admin.active.task')->with($notification);
     }
 
     public function activeUserTask($taskId){
          $task  = Task::with('user')->findOrFail($taskId);
 //
          return view('admin.task.show')->with('task', $task);
+    }
+
+    public function edit($taskId){
+        $task  = Task::with('user')->findOrFail($taskId);
+//
+        return view('admin.task.edit')->with('task', $task);
+    }
+
+    public  function  update(Request $request, $taskId){
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
+            'description' => 'required|string',
+            'title' => 'required|string|max:255',
+            'start_date' => 'required|date',
+            'stop_date' => 'nullable|date|after:start_date',
+            'additional_file' => 'nullable|mimes:jpg,jpeg,png,pdf|max:20480',
+        ]);
+
+        if ($validator->fails()) {
+            $notification = $this->generateNotification('Validation failed. Please check your input.', 'error');
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput()
+                ->with($notification);
+        }
+        $task  = Task::with('user')->findOrFail($taskId);
+
+        $task->update([
+            'user_id' => $request->input('user_id'),
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'start_date' => $request->input('start_date'),
+            'end_date' => $request->input('end_date'),
+            'additional_file' => $this->processPhoto($request)
+        ]);
+        $notification = $this->generateNotification('Assignment successfully Updated!', 'success');
+        return redirect()->route('admin.active.task')->with($notification);
+
     }
 
 }
