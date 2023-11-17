@@ -56,6 +56,11 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function(){
         Route::get('assign/task', 'create')->name('admin.task.create');
         Route::get('user/task/{user}','showFormForUser')->name('admin.user.task');
         Route::post('assign/task','store')->name('admin.task.store');
+
+        Route::get('active/tasks', 'index')->name('admin.active.task');
+        Route::get('all/tasks', 'allTasks')->name('admin.all.task');
+        Route::get('tasks/{$userId}', 'getUserActiveTask')->name('admin.user.task');
+
     });
 
 

@@ -10,7 +10,7 @@
         <div class="col-lg-8 col-xl-8 mx-auto">
             <div class="card">
                 <div class="card-body">
-                    <form method="post" action="" enctype="multipart/form-data">
+                    <form method="post" action="{{route('admin.task.store')}}" enctype="multipart/form-data">
                         @csrf
                         <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i>
                             @isset($user)
@@ -45,9 +45,11 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label for="name" class="form-label">Title</label>
-                                    <input type="text" class="form-control @error('name')  is-invalid @enderror" id="name" placeholder="Surname Firstname, Other names" name="name" value="{{ old('name') }}">
-                                    @error('name')
+                                    <label for="title" class="form-label">Title</label>
+                                    <input type="text" class="form-control @error('title')  is-invalid @enderror"
+                                           id="title" placeholder="Assignment title .." name="title" value="{{ old
+                                           ('title') }}">
+                                    @error('title')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -58,8 +60,8 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="start_date" class="form-label">Start Date</label>
-                                    <input  min="{{ date('Y-m-d', strtotime('tomorrow')) }} type="date" class="form-control @error('start_date')  is-invalid @enderror"
-                                           id="start_date" placeholder="Start date .." name="name" value="{{ old('start_date') }}">
+                                    <input  min="{{ date('Y-m-d', strtotime('tomorrow')) }}" type="date" class="form-control @error('start_date')  is-invalid @enderror"
+                                           id="start_date" placeholder="Start date .." name="start_date" value="">
                                     @error('start_date')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -69,8 +71,7 @@
                                 <div class="mb-3">
                                     <label for="end_date" class="form-label">End Date</label>
                                     <input type="date" class="form-control @error('end_date')  is-invalid @enderror"
-                                           id="end_date" placeholder="Stop date .." name="end_date" value="{{ old
-                                           ('end_date') }}">
+                                           id="end_date" placeholder="Stop date .." name="end_date" value="">
                                     @error('end_date')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -83,7 +84,7 @@
                                 <div class="mb-3">
                                     <label for="description" class="form-label">Assignment Description </label>
                                     <textarea style="height: 300px;"  class="form-control @error('description')  is-invalid @enderror"
-                                               id="snow-editor" placeholder="Assignment Description ..." name="description	" value="{{
+                                               id="snow-editor" placeholder="Assignment Description ..." name="description" value="{{
                                        old('description') }}"></textarea>
                                     @error('description')
                                     <span class="invalid-feedback">{{ $message }}</span>

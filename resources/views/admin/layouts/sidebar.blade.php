@@ -86,17 +86,15 @@
                                 <a href="{{route('admin.task.create')}}">Create</a>
                             </li>
                             <li>
-                                <a href="crm-contacts.html">Assign</a>
+                                <a href="{{route('admin.active.task')}}">Active Assignments</a>
                             </li>
                             <li>
-                                <a href="crm-opportunities.html">view</a>
+                                <a href="crm-leads.html">Archive</a>
                             </li>
                             <li>
-                                <a href="crm-leads.html">Leads</a>
+                                <a href="crm-leads.html">All Assignments</a>
                             </li>
-                            <li>
-                                <a href="crm-customers.html">Customers</a>
-                            </li>
+
                         </ul>
                     </div>
                 </li>

@@ -93,13 +93,58 @@ css" />
                                                     </tr>
 
                                                 @endif
-                                                <tr>
-                                                    <th></th>
-                                                    <td><a href="{{route('admin.user.task', $user)}}" class="btn
-                                                    btn-success waves-effect
-                                                    waves-light
-                                                    mt-2">Assign Duties</a></td>
-                                                </tr>
+                                                @if($user->tasks->where('status', 'active')->isNotEmpty())
+                                                    <!-- Display if user has an active assignment -->
+                                                    @foreach($user->tasks->where('status', 'active') as $task)
+                                                        <tr>
+                                                            <td colspan="2" class="text-success"><p class="leading-relaxed">
+                                                                    Active on
+                                                                    going assignment </p></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="text-info">Assignment Title</th>
+                                                            <td>{{ $task->title }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="text-info">Assignment Description</th>
+                                                            <td>{!! $task->description !!}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="text-info">Start Date</th>
+                                                            <td>{{ $task->start_date->format('F j, Y') }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="text-info">End Date</th>
+                                                            <td>{{ $task->end_date->format('F j, Y') ?? 'Not available ..' }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="text-info">Additional File</th>
+                                                            <td>
+                                                                @if($task->additional_file)
+                                                                    @if(pathinfo($task->additional_file, PATHINFO_EXTENSION) == 'pdf')
+                                                                        <!-- Display PDF -->
+                                                                        <a href="{{ asset($task->additional_file) }}" target="_blank">View PDF</a>
+                                                                    @else
+                                                                        <!-- Display Image -->
+                                                                        <a href="{{ asset($task->additional_file) }}" download>
+                                                                            <img src="{{ asset($task->additional_file) }}" alt="Additional File" class="img-fluid">
+                                                                        </a>
+                                                                    @endif
+                                                                @else
+                                                                    No additional file
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @else
+                                                    <!-- Display if user doesn't have an active assignment -->
+                                                    <tr>
+                                                        <th></th>
+                                                        <td>
+                                                            <a href="{{ route('admin.user.task', $user) }}" class="btn btn-success waves-effect waves-light mt-2">Assign Duties</a>
+                                                        </td>
+                                                    </tr>
+                                                @endif
                                                 </thead>
 
 

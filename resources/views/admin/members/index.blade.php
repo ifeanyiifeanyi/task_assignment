@@ -35,9 +35,14 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>
                                     <p> {{ Str::ucfirst($user->name) }}</p>
-                                    <p><a href="{{route('admin.user.task', $user)}}" class="btn btn-primary
+
+                                    @if($user->tasks->where('status', 'active')->first())
+                                        <p class="text-bg-success p-1 rounded">Active Assignment, on going ..</p>
+                                    @else
+                                        <p><a href="{{route('admin.user.task', $user)}}" class="btn btn-primary
                                     waves-effect waves-light
                                     mt-2">Assign</a></p>
+                                    @endif
                                 </td>
                                 <td>{{ Str::ucfirst($user->username) }}</td>
                                 <td>{{$user->email}}</td>
