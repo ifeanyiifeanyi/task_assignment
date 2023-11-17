@@ -154,6 +154,9 @@ class TaskController extends Controller
         ]);
         $notification = $this->generateNotification('Assignment successfully Updated!', 'success');
         return redirect()->route('admin.active.task')->with($notification);
+    }
+
+    public function endActiveTask($taskId){
 
     }
 

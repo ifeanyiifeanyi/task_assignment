@@ -48,16 +48,26 @@
                                             waves-light mr-2 ">
                                                 Edit
                                             </a>
-                                            <a href="" class="btn btn-danger
+
+                                            @if($task->status == 'active')
+                                                <form id="stopAssignment" action="{{route('admin.user.endActiveTask',
+                                                $task)}}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <button type="submit" class="btn btn-soft-warning waves-effect waves-light mr-2 ">
+                                                        End Assignment
+                                                    </button>
+                                                </form>
+
+                                            @else
+                                                <a href="" class="btn btn-danger
                                             waves-effect
                                             waves-light mr-2 ">
-                                                Delete
-                                            </a>
-                                            <a href="" class="btn btn-soft-warning
-                                            waves-effect
-                                            waves-light mr-2 ">
-                                                End Assignment
-                                            </a>
+                                                    Delete
+                                                </a>
+                                            @endif
+
+
                                         </div>
                                     </td>
                                 </tr>
@@ -97,6 +107,40 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         if ($("#delete").submit()) {
+                            Swal.fire(
+                                'Deleted!'
+                                , 'Content deleted.'
+                                , 'success'
+                            )
+                        }
+                    }
+                })
+            })
+
+        })
+
+    </script>
+
+    <script>
+        $(function() {
+            $(document).on('click', '#stopAssignment', function(e) {
+                e.preventDefault();
+                let link = $(this).data("id");
+                console.log({
+                    link
+                });
+
+                Swal.fire({
+                    title: 'Are you sure?'
+                    , text: "You won't be able to revert this!"
+                    , icon: 'warning'
+                    , showCancelButton: true
+                    , confirmButtonColor: '#3085d6'
+                    , cancelButtonColor: '#d33'
+                    , confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        if ($("#stopAssignment").submit()) {
                             Swal.fire(
                                 'Deleted!'
                                 , 'Content deleted.'

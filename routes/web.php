@@ -63,6 +63,8 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function(){
         Route::get('edit/active/task/{taskId}', 'edit')->name('admin.user.editActiveTask');
         Route::put('update/active/task/{taskId}', 'update')->name('admin.user.updateActiveTask');
 
+        Route::get('end/active/task/{taskId}', 'endActiveTask')->name('admin.user.endActiveTask');
+
     });
 
 
