@@ -68,6 +68,10 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function(){
         Route::delete('delete/task/{taskId}', 'destroy')->name('admin.task.destroyTaskNow');
         Route::get('archive/tasks','archivedTask')->name('admin.task.archive');
 
+        Route::get('restore/task/{taskId}', 'restoreTask')->name('admin.restore.task');
+
+        Route::delete('force-delete/task/{taskId}', 'forceDeleteTask')->name('admin.forceDelete.task');
+
     });
 
 

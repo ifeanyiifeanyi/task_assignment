@@ -200,4 +200,69 @@ class TaskController extends Controller
         }
     }
 
+    public function archivedTask(){
+        $tasks = Task::onlyTrashed()->get();
+        return view('admin.task.archievedTask', compact('tasks'));
+
+    }
+
+    public function restoreTask($taskId)
+    {
+        $task = Task::withTrashed()->findOrFail($taskId);
+
+        // Check if the task is soft-deleted
+        if ($task->trashed()) {
+            // Restore the task (remove the soft delete)
+            $task->restore();
+
+            // Update the status to 'active'
+            $task->update(['status' => 'active']);
+
+            $notification = [
+                'message' => 'Assignment restored successfully!',
+                'alert-type' => 'success',
+            ];
+        } else {
+            $notification = [
+                'message' => 'Assignment not found or not soft-deleted.',
+                'alert-type' => 'error',
+            ];
+        }
+
+        return redirect()->route('admin.task.archive')->with($notification);
+    }
+
+
+
+    public function forceDeleteTask($taskId)
+    {
+        // Retrieve the specific task based on $taskId
+        $task = Task::onlyTrashed()->find($taskId);
+
+        // Check if the task is found and is trashed
+        if ($task && $task->trashed()) {
+            if ($task && $task->photo){
+                unlink(public_path($task->photo));
+            }
+            // Permanently delete the task
+            $task->forceDelete();
+
+            $notification = [
+                'message' => 'Assignment deleted permanently!',
+                'alert-type' => 'success',
+            ];
+            return redirect()->route('admin.task.archive')->with($notification);
+
+        } else {
+            $notification = [
+                'message' => 'Assignment not found or already deleted.',
+                'alert-type' => 'error',
+            ];
+        return redirect()->route('admin.task.archive')->with($notification);
+
+        }
+
+    }
+
+
 }

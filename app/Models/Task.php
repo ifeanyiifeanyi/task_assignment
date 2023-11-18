@@ -27,4 +27,15 @@ class Task extends Model
         return $value ? Carbon::parse($value) : null;
     }
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Listen for the restoring event
+        static::restoring(function ($task) {
+            // Set the status to "active" when restoring
+            $task->status = 'active';
+        });
+    }
+
 }
