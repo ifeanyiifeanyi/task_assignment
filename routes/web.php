@@ -63,7 +63,10 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function(){
         Route::get('edit/active/task/{taskId}', 'edit')->name('admin.user.editActiveTask');
         Route::put('update/active/task/{taskId}', 'update')->name('admin.user.updateActiveTask');
 
-        Route::get('end/active/task/{taskId}', 'endActiveTask')->name('admin.user.endActiveTask');
+        Route::put('end/active/task/{taskId}', 'endActiveTask')->name('admin.user.endActiveTask');
+        Route::get('view/task/{taskId}', 'ViewTask')->name('admin.view.CurrentTask');
+        Route::delete('delete/task/{taskId}', 'destroy')->name('admin.task.destroyTaskNow');
+        Route::get('archive/tasks','archivedTask')->name('admin.task.archive');
 
     });
 

@@ -89,10 +89,10 @@
                                 <a href="{{route('admin.active.task')}}">Active Assignments</a>
                             </li>
                             <li>
-                                <a href="crm-leads.html">Archive</a>
+                                <a href="{{route('admin.task.archive')}}">Archive</a>
                             </li>
                             <li>
-                                <a href="crm-leads.html">All Assignments</a>
+                                <a href="{{route('admin.all.task')}}">All Assignments</a>
                             </li>
 
                         </ul>

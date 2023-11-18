@@ -157,7 +157,47 @@ class TaskController extends Controller
     }
 
     public function endActiveTask($taskId){
+        $task  = Task::with('user')->findOrFail($taskId);
 
+        $task->update([
+            'status' => 'disabled',
+        ]);
+        $notification = $this->generateNotification('Assignment status Updated!', 'success');
+        return redirect()->route('admin.active.task')->with($notification);
+    }
+
+    public function allTasks(){
+        $tasks = Task::all();
+        return view('admin.task.allTask', compact('tasks'));
+    }
+
+    public  function ViewTask($taskId){
+        $task  = Task::with('user')->findOrFail($taskId);
+        return view('admin.task.viewAnyTask', compact('task'));
+    }
+
+    public function destroy($taskId){
+
+        if (auth()->user()->role === "admin"){
+            $task  = Task::with('user')->findOrFail($taskId);
+            if ($task && $task->additional_file){
+                unlink(public_path($task->additional_file));
+            }
+            if ($task) {
+                $task->delete();
+                $notification = [
+                    'message' => 'Assignment deleted successfully',
+                    'alert-type' => 'error',
+                ];
+                return redirect()->route('admin.all.task')->with($notification);
+            }
+        }else{
+            $notification = [
+                'message' => 'You are not authorized to delete this assignment',
+                'alert-type' => 'error',
+            ];
+            return redirect()->route('admin.all.task')->with($notification);
+        }
     }
 
 }

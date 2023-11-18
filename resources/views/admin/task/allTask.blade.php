@@ -1,6 +1,6 @@
 @extends('admin.layouts.admin')
 
-@section('title', 'All Active Assignment')
+@section('title', 'All Assignment')
 @section('css')
 
 @endsection
@@ -23,6 +23,7 @@
                                 <th>Title</th>
                                 <th>User</th>
                                 <th>Start Date</th>
+                                <th>End Date</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
@@ -35,27 +36,24 @@
                                     <td>{{Str::ucfirst($task->title)}}</td>
                                     <td>{{Str::ucfirst($task->user->name)}}</td>
                                     <td>{{$task->start_date->format('F j, Y')}}</td>
+                                    <td>{{$task->end_date->format('F j, Y') ?? 'Not available'}}</td>
                                     <td>
                                         <div class="btn-group mr-2" role="group" aria-label="First group">
-                                            <a href="{{route('admin.user.activeTask', $task)}}" class="btn btn-info
+                                            <a href="{{route('admin.view.CurrentTask', $task)}}" class="btn btn-primary
                                             waves-effect
                                             waves-light mr-2 ">
                                                 View
                                             </a>
-                                            <a href="{{route('admin.user.editActiveTask', $task)}}" class="btn
-                                            btn-primary
-                                            waves-effect
-                                            waves-light mr-2 ">
-                                                Edit
-                                            </a>
-                                                <form id="stopAssignment" action="{{route('admin.user.endActiveTask',
+
+                                            <form id="delete" action="{{route('admin.task.destroyTaskNow',
                                                 $task)}}" method="POST">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <button type="submit" class="btn btn-soft-warning waves-effect waves-light mr-2 ">
-                                                        End Assignment
-                                                    </button>
-                                                </form>
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger waves-effect
+                                                waves-light mr-2 ">
+                                                    Delete
+                                                </button>
+                                            </form>
 
                                         </div>
                                     </td>
@@ -96,40 +94,6 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         if ($("#delete").submit()) {
-                            Swal.fire(
-                                'Deleted!'
-                                , 'Content deleted.'
-                                , 'success'
-                            )
-                        }
-                    }
-                })
-            })
-
-        })
-
-    </script>
-
-    <script>
-        $(function() {
-            $(document).on('click', '#stopAssignment', function(e) {
-                e.preventDefault();
-                let link = $(this).data("id");
-                console.log({
-                    link
-                });
-
-                Swal.fire({
-                    title: 'Are you sure?'
-                    , text: "You won't be able to revert this!"
-                    , icon: 'warning'
-                    , showCancelButton: true
-                    , confirmButtonColor: '#3085d6'
-                    , cancelButtonColor: '#d33'
-                    , confirmButtonText: 'Yes, end the assignment!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        if ($("#stopAssignment").submit()) {
                             Swal.fire(
                                 'Deleted!'
                                 , 'Content deleted.'
