@@ -99,7 +99,7 @@ class TaskController extends Controller
         }
 
         // Create a new task
-        $user->tasks()->create([
+        $task = $user->tasks()->create([
             'title' => $request->title,
             'description' => $request->description,
             'user_id' => $request->user_id,
@@ -108,6 +108,9 @@ class TaskController extends Controller
             // Add other task fields as needed
             'additional_file' => $this->processPhoto($request)
         ]);
+        // Send email to user and admin
+        Mail::to($user->email)->send(new AssignmentCreated($user, $task));
+        Mail::to('admin@example.com')->send(new AssignmentCreated($user, $task));
 
         $notification = $this->generateNotification('Assignment successfully created.', 'success');
         return redirect()->route('admin.active.task')->with($notification);
