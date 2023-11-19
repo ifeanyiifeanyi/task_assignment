@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AssignmentCreated;
+use App\Mail\AssignmentUpdated;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
-use JetBrains\PhpStorm\NoReturn;
 
 class TaskController extends Controller
 {
@@ -155,6 +157,9 @@ class TaskController extends Controller
             'end_date' => $request->input('end_date'),
             'additional_file' => $this->processPhoto($request)
         ]);
+        // Send email to the user about the update
+        Mail::to($task->user->email)->send(new AssignmentUpdated($task->user, $task));
+
         $notification = $this->generateNotification('Assignment successfully Updated!', 'success');
         return redirect()->route('admin.active.task')->with($notification);
     }
@@ -165,6 +170,7 @@ class TaskController extends Controller
         $task->update([
             'status' => 'disabled',
         ]);
+
         $notification = $this->generateNotification('Assignment status Updated!', 'success');
         return redirect()->route('admin.active.task')->with($notification);
     }
