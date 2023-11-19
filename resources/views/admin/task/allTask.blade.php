@@ -16,7 +16,8 @@
                             No data available
                         </div>
                     @else
-                        <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+                        <div class="table-responsive">
+                            <table id="" class="table table-striped dt-responsive nowrap w-100">
                             <thead>
                             <tr>
                                 <th>s/n</th>
@@ -41,19 +42,25 @@
                                         <div class="btn-group mr-2" role="group" aria-label="First group">
                                             <a href="{{route('admin.view.CurrentTask', $task)}}" class="btn btn-primary
                                             waves-effect
-                                            waves-light mr-2 ">
+                                            waves-light">
                                                 View
                                             </a>
 
-                                            <form id="delete" action="{{route('admin.task.destroyTaskNow',
+                                            @if($task->status == 'active')
+                                                <a class="btn btn-success waves-effect
+                                                waves-light" disabled="true" title="Assignment is active therefore, cannot be deleted">Active</a>
+                                            @else
+                                                <form id="delete" action="{{route('admin.task.destroyTaskNow',
                                                 $task)}}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger waves-effect
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger waves-effect
                                                 waves-light mr-2 ">
-                                                    Delete
-                                                </button>
-                                            </form>
+                                                        Delete
+                                                    </button>
+                                                </form>
+                                            @endif
+
 
                                         </div>
                                     </td>
@@ -63,7 +70,7 @@
 
                             </tbody>
                         </table>
-
+                        </div>
                     @endif
 
 

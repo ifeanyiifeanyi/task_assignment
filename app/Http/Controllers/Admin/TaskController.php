@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Mail\AssignmentCreated;
+use App\Mail\AssignmentEnded;
 use App\Mail\AssignmentUpdated;
 use App\Models\Task;
 use App\Models\User;
@@ -111,8 +112,9 @@ class TaskController extends Controller
             'additional_file' => $this->processPhoto($request)
         ]);
         // Send email to user and admin
-        Mail::to($user->email)->send(new AssignmentCreated($user, $task));
-        Mail::to('admin@example.com')->send(new AssignmentCreated($user, $task));
+        Mail::to($user->email)->queue(new AssignmentCreated($user, $task));
+        Mail::to('admin@example.com')->queue(new AssignmentCreated($user, $task));
+
 
         $notification = $this->generateNotification('Assignment successfully created.', 'success');
         return redirect()->route('admin.active.task')->with($notification);
@@ -158,8 +160,7 @@ class TaskController extends Controller
             'additional_file' => $this->processPhoto($request)
         ]);
         // Send email to the user about the update
-        Mail::to($task->user->email)->send(new AssignmentUpdated($task->user, $task));
-
+        Mail::to($task->user->email)->queue(new AssignmentUpdated($task->user, $task));
         $notification = $this->generateNotification('Assignment successfully Updated!', 'success');
         return redirect()->route('admin.active.task')->with($notification);
     }
@@ -171,6 +172,7 @@ class TaskController extends Controller
             'status' => 'disabled',
         ]);
 
+        Mail::to($task->user->email)->queue(new AssignmentEnded($task->user, $task));
         $notification = $this->generateNotification('Assignment status Updated!', 'success');
         return redirect()->route('admin.active.task')->with($notification);
     }

@@ -70,7 +70,6 @@ class MembersManagementController extends Controller
             'role'                => 'nullable',
             'parish_of_residence' => 'nullable|string',
             'dioceses'            => 'required|string',
-            'password'             => 'required|confirmed|string|min:6|max:10',
         ]);
 
         $user = new User();
@@ -89,7 +88,8 @@ class MembersManagementController extends Controller
         $user->home_parish = $request->home_parish;
         $user->parish_of_residence = $request->parish_of_residence;
         $user->dioceses = $request->dioceses;
-        $user->password = Hash::make($request->password);
+        $user->password = Hash::make('12345678');
+        $user->email_verified_at = now();
         $user->save();
 
         $notification = [

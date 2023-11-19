@@ -16,7 +16,8 @@
                             No data available
                         </div>
                     @else
-                        <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+                        <div class="table-responsive">
+                            <table id="" class="table table-striped dt-responsive nowrap w-100">
                             <thead>
                             <tr>
                                 <th>s/n</th>
@@ -37,12 +38,14 @@
                                     <td>{{$task->start_date->format('F j, Y')}}</td>
                                     <td>
                                         <div class="btn-group mr-2" role="group" aria-label="First group">
-                                            <a href="{{route('admin.user.activeTask', $task)}}" class="btn btn-info
+                                            <a title="View assignment" href="{{route('admin.user.activeTask', $task)}}"
+                                               class="btn btn-info
                                             waves-effect
                                             waves-light mr-2 ">
                                                 View
                                             </a>
-                                            <a href="{{route('admin.user.editActiveTask', $task)}}" class="btn
+                                            <a title="Edit assignment" href="{{route('admin.user.editActiveTask', $task)
+                                            }}" class="btn
                                             btn-primary
                                             waves-effect
                                             waves-light mr-2 ">
@@ -52,8 +55,10 @@
                                                 $task)}}" method="POST">
                                                     @csrf
                                                     @method('PUT')
-                                                    <button type="submit" class="btn btn-soft-warning waves-effect waves-light mr-2 ">
-                                                        End Assignment
+                                                    <button title="End the Assignment" type="submit" class="btn btn-soft-warning
+                                                    waves-effect
+                                                    waves-light mr-2 ">
+                                                        End
                                                     </button>
                                                 </form>
 
@@ -65,7 +70,7 @@
 
                             </tbody>
                         </table>
-
+                        </div>
                     @endif
 
 

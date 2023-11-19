@@ -13,6 +13,7 @@
                     <form method="post" action="{{route('admin.member.store')}}" enctype="multipart/form-data">
                         @csrf
                         <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Personal Info</h5>
+                        <p class="text-info">A default password of <b>12345678</b> will assigned to the new user account</p>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
@@ -139,24 +140,6 @@
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="password" class="form-label">Password</label>
-                                        <input type="password" class="form-control @error('password')  is-invalid @enderror" name="password" id="password" placeholder="Enter password" value="">
-                                        @error('password')
-                                        <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="password_confirmation" class="form-label">Confirm password</label>
-                                        <input type="password" class="form-control" id="password_confirmation" placeholder="Confirm password" name="password_confirmation" value="">
-
-                                    </div>
-                                </div> <!-- end col -->
-                            </div> <!-- end row -->
 
                         <div class="row">
                             <div class="col-md-6">
