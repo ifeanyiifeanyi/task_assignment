@@ -16,7 +16,8 @@
                         No data available
                     </div>
                 @else
-                    <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+                    <div class="table-responsive">
+                        <table id="" class="table table-striped dt-responsive nowrap w-100">
                         <thead>
                         <tr>
                             <th>s/n</th>
@@ -58,6 +59,7 @@
                                             waves-effect waves-light btn-group-sm">
                                             Edit
                                         </a>
+                                        @if(!$user->tasks->where('status', 'active')->isNotEmpty())
                                         <form id="delete" action="{{ route('admin.member.delete', $user) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
@@ -66,6 +68,14 @@
                                                 Delete
                                             </button>
                                         </form>
+                                        @else
+                                            <a href="#!" title="User has an active assignment and cannot be deleted"
+                                               disabled="true" class="btn btn-success
+                                            waves-effect waves-light btn-group-sm">
+                                                Active
+                                            </a>
+                                        @endif
+
                                     </div>
                                 </td>
                             </tr>
@@ -73,7 +83,7 @@
 
                         </tbody>
                     </table>
-
+                    </div>
                 @endif
 
 
