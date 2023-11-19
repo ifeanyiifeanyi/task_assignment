@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,6 +13,15 @@ use Intervention\Image\Facades\Image;
 
 class AdminController extends Controller
 {
+    public function index(){
+        $user_not_admin_count =  User::where('role', '<>', 'admin')->count();
+        $user_admin_count =  User::where('role', 'admin')->count();
+        $active_task = Task::where('status', 'active')->count();
+        $tasks = Task::count();
+
+        return view('admin.dashboard',
+            compact('user_not_admin_count', 'user_admin_count', 'active_task', 'tasks'));
+    }
     /**
      * Display the specified resource.
      */

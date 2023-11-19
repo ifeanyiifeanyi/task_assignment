@@ -27,14 +27,15 @@ Route::get('member/dashboard', function () {
     return view('member.dashboard');
 })->middleware(['auth', 'role:member'])->name('member.dashboard');
 
-
-Route::get('admin/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'role:admin'])->name('admin.dashboard');
+//
+//Route::get('admin/dashboard', function () {
+//    return view('admin.dashboard');
+//})->middleware(['auth', 'role:admin'])->name('admin.dashboard');
 
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function(){
     Route::controller(AdminController::class)->group(function (){
+        Route::get('dashboard', 'index')->name('admin.dashboard');
         Route::get('logout', 'logout')->name('admin.logout');
         Route::get('profile', 'show')->name('admin.show');
         Route::post('profile/{user}', 'update')->name('admin.profile.update');
