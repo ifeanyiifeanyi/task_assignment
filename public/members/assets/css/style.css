@@ -1,4 +1,4 @@
- 
+
 /* Css For Realshed */
 
 /************ TABLE OF CONTENTS ***************
@@ -44,7 +44,7 @@
 
 
 
-/*** 
+/***
 
 ====================================================================
   Reset
@@ -59,7 +59,7 @@
 }
 
 
-/*** 
+/***
 
 ====================================================================
   Global Settings
@@ -155,7 +155,7 @@ input,button,select,textarea{
 ul,li{
   list-style:none;
   padding:0px;
-  margin:0px; 
+  margin:0px;
 }
 
 input{
@@ -291,7 +291,7 @@ h1,h2,h3,h4,h5,h6{
 
 .handle-preloader .animation-preloader .spinner{
   border: 3px solid #ffffff;
-  border-top-color: rgba(255, 255, 255, 0.5); 
+  border-top-color: rgba(255, 255, 255, 0.5);
 }
 
 /* AnimaciÃ³n del preloader */
@@ -509,7 +509,7 @@ img {
   bottom: 50px;
 }
 
-.scroll-top:after, 
+.scroll-top:after,
 .scroll-top:before {
   width: 100%;
   height: 100%;
@@ -567,7 +567,7 @@ img {
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-One
@@ -841,7 +841,7 @@ img {
 
 .main-menu .navigation > li.current > a,
 .main-menu .navigation > li:hover > a{
-  
+
 }
 
 .main-menu .navigation > li.dropdown > a span{
@@ -903,7 +903,7 @@ img {
 
 .main-menu .navigation > li > ul.from-right{
   left:auto;
-  right:0px;  
+  right:0px;
 }
 
 .main-menu .navigation > li > ul > li{
@@ -966,7 +966,7 @@ img {
 }
 
 .main-menu .navigation > li > ul > li:last-child{
-  border-bottom:none; 
+  border-bottom:none;
 }
 
 .main-menu .navigation > li > ul > li > a,
@@ -1008,7 +1008,7 @@ img {
   font-size:16px;
   font-weight:800;
   text-align:center;
-  z-index:5;  
+  z-index:5;
 }
 
 .main-menu .navigation > li > ul > li > ul{
@@ -1037,7 +1037,7 @@ img {
 
 .main-menu .navigation > li > ul > li > ul.from-right{
   left:auto;
-  right:0px;  
+  right:0px;
 }
 
 .main-menu .navigation > li > ul > li > ul > li{
@@ -1086,11 +1086,11 @@ img {
 }
 
 .main-menu .navigation > li > ul > li > ul > li:last-child{
-  border-bottom:none; 
+  border-bottom:none;
 }
 
 .main-menu .navigation > li > ul > li > ul > li:last-child{
-  border-bottom:none; 
+  border-bottom:none;
 }
 
 .main-menu .navigation > li > ul > li > ul > li > a{
@@ -1115,7 +1115,7 @@ img {
 }
 
 .main-menu .navigation > li > ul > li > ul > li > a:hover{
-  
+
 }
 
 .main-menu .navigation > li > ul > li > ul > li.dropdown > a:after{
@@ -1128,7 +1128,7 @@ img {
   line-height:24px;
   font-size:16px;
   font-weight:900;
-  z-index:5;  
+  z-index:5;
 }
 
 .main-menu .navigation > li.dropdown:hover > ul,
@@ -1147,7 +1147,7 @@ img {
   filter: alpha(opacity=100);
   top: 0%;
   -webkit-transform: rotateX(0);
-  transform: rotateX(0); 
+  transform: rotateX(0);
 }
 
 .main-menu .navigation li.dropdown .dropdown-btn{
@@ -1168,7 +1168,7 @@ img {
 
 .main-menu .navigation li.current.dropdown .dropdown-btn,
 .main-menu .navigation li:hover .dropdown-btn{
-  
+
 }
 
 .main-menu .navigation li.dropdown ul li.dropdown .dropdown-btn{
@@ -1251,13 +1251,13 @@ img {
 }
 
 .mobile-menu .navbar-collapse{
-  display:block !important; 
+  display:block !important;
 }
 
 .mobile-menu .nav-logo{
   position:relative;
   padding:50px 25px;
-  text-align:left;  
+  text-align:left;
   padding-bottom: 100px;
 }
 
@@ -1384,7 +1384,7 @@ img {
   -moz-transition: all 500ms ease;
   -ms-transition: all 500ms ease;
   -o-transition: all 500ms ease;
-  transition: all 500ms ease; 
+  transition: all 500ms ease;
 }
 
 .mobile-menu .navigation li ul li > a{
@@ -1404,7 +1404,7 @@ img {
   -moz-transition: all 500ms ease;
   -ms-transition: all 500ms ease;
   -o-transition: all 500ms ease;
-  transition: all 500ms ease; 
+  transition: all 500ms ease;
 }
 
 .mobile-menu .navigation li.current > a:before{
@@ -1428,7 +1428,7 @@ img {
   -moz-transition: all 500ms ease;
   -ms-transition: all 500ms ease;
   -o-transition: all 500ms ease;
-  transition: all 500ms ease; 
+  transition: all 500ms ease;
   z-index:5;
 }
 
@@ -1436,7 +1436,7 @@ img {
   color: #ffffff;
   -webkit-transform:rotate(90deg);
   -ms-transform:rotate(90deg);
-  transform:rotate(90deg);  
+  transform:rotate(90deg);
 }
 
 .mobile-menu .navigation li > ul,
@@ -1465,11 +1465,11 @@ img {
   -moz-transition: all 500ms ease;
   -ms-transition: all 500ms ease;
   -o-transition: all 500ms ease;
-  transition: all 500ms ease; 
+  transition: all 500ms ease;
 }
 
 .mobile-menu .social-links li a:hover{
-  
+
 }
 
 div#mCSB_1_container{
@@ -1502,7 +1502,7 @@ div#mCSB_1_container{
 }
 
 .mobile-menu .contact-info ul li a:hover{
-  
+
 }
 
 .mobile-menu .contact-info ul li:last-child{
@@ -1582,7 +1582,7 @@ div#mCSB_1_container{
 }
 
 .tabs-box .tab.active-tab{
-  display:block;  
+  display:block;
 }
 
 .tabs-box .tab{
@@ -2372,7 +2372,7 @@ div#mCSB_1_container{
   text-align: center;
 }
 
-.video-section .video-btn a:after, 
+.video-section .video-btn a:after,
 .video-section .video-btn a:before {
   width: 100%;
   height: 100%;
@@ -3394,7 +3394,7 @@ div#mCSB_1_container{
 }
 
 .bg-color-3{
-  
+
 }
 
 
@@ -3712,7 +3712,7 @@ div#mCSB_1_container{
 }
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-Two
@@ -4080,7 +4080,7 @@ div#mCSB_1_container{
 
 .deals-style-two{
   position: relative;
-} 
+}
 
 .deals-style-two .image-box{
   position: relative;
@@ -4630,7 +4630,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-Three
@@ -4657,7 +4657,7 @@ div#mCSB_1_container{
   display: none;
 }
 
-.header-style-three .header-lower .main-menu .navigation > li.current > a, 
+.header-style-three .header-lower .main-menu .navigation > li.current > a,
 .header-style-three .header-lower .main-menu .navigation > li:hover > a{
   color: #fff !important;
 }
@@ -4844,7 +4844,7 @@ div#mCSB_1_container{
 }
 
 .search-field-section .tabs-content .tab-btns li.active-btn:after{
-  
+
 }
 
 .search-field-section.style-two .search-field .top-search .search-btn button{
@@ -4905,7 +4905,7 @@ div#mCSB_1_container{
 }
 
 .owl-item:nth-child(2n+1) .feature-block-two .inner-box .icon-box{
-  
+
 }
 
 .feature-block-two .inner-box .icon-box:before{
@@ -4942,7 +4942,7 @@ div#mCSB_1_container{
 }
 
 .owl-item:nth-child(2n+1) .feature-block-two .inner-box .icon-box:before{
-  
+
 }
 
 .feature-block-two .inner-box h4{
@@ -5114,7 +5114,7 @@ div#mCSB_1_container{
   left: 0px;
   bottom: 0px;
   width: 100%;
-  height: 48px;  
+  height: 48px;
   background-repeat: no-repeat;
   background-position: top center;
 }
@@ -5305,7 +5305,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-Four
@@ -5565,7 +5565,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-Five
@@ -6126,7 +6126,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Agents-Page
@@ -6395,7 +6395,7 @@ div#mCSB_1_container{
   background-color: #ffffff;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 10px 30px 0px rgb(0 0 0 / 10%);
+    width: inherit;
   min-height: 390px;
   margin-bottom: 30px;
 }
@@ -6791,7 +6791,7 @@ div#mCSB_1_container{
 }
 
 .agent-details-page .tab-btn-box .tab-btns li.active-btn:after{
-  
+
 }
 
 .agent-details-page .deals-block-one .image-box .buy-btn{
@@ -6873,7 +6873,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Property-Page
@@ -7418,7 +7418,7 @@ div#mCSB_1_container{
 }
 
 .accordion-box .block .acc-btn.active h5{
-  
+
 }
 
 .accordion-box .block .acc-content{
@@ -7429,7 +7429,7 @@ div#mCSB_1_container{
 }
 
 .accordion-box .block .acc-content.current{
-  display:block;  
+  display:block;
 }
 
 .accordion-box .block .acc-content p{
@@ -7633,8 +7633,8 @@ div#mCSB_1_container{
   border: 1px solid #f9f9f9 !important;
 }
 
-.ui-state-highlight, 
-.ui-widget-content .ui-state-highlight, 
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight{
   border: 1px solid #333333 !important;
   background: #333333 !important;
@@ -7645,7 +7645,7 @@ div#mCSB_1_container{
   left: 5px;
 }
 
-.ui-datepicker .ui-datepicker-prev, 
+.ui-datepicker .ui-datepicker-prev,
 .ui-datepicker .ui-datepicker-next {
   border-radius: 30%;
   height: 20px;
@@ -7660,7 +7660,7 @@ div#mCSB_1_container{
   right: 5px;
 }
 
-.ui-datepicker .ui-datepicker-prev:hover, 
+.ui-datepicker .ui-datepicker-prev:hover,
 .ui-datepicker .ui-datepicker-next:hover {
   top: 7px;
   background: #fff;
@@ -7823,12 +7823,12 @@ div#mCSB_1_container{
   border-right: 0;
 }
 
-.mortgage-calculator .input-group .form-control:first-child, 
-.mortgage-calculator .input-group-addon:first-child, 
-.mortgage-calculator .input-group-btn:first-child>.btn, 
-.mortgage-calculator .input-group-btn:first-child>.btn-group>.btn, 
-.mortgage-calculator .input-group-btn:first-child>.dropdown-toggle, 
-.mortgage-calculator .input-group-btn:last-child>.btn-group:not(:last-child)>.btn, 
+.mortgage-calculator .input-group .form-control:first-child,
+.mortgage-calculator .input-group-addon:first-child,
+.mortgage-calculator .input-group-btn:first-child>.btn,
+.mortgage-calculator .input-group-btn:first-child>.btn-group>.btn,
+.mortgage-calculator .input-group-btn:first-child>.dropdown-toggle,
+.mortgage-calculator .input-group-btn:last-child>.btn-group:not(:last-child)>.btn,
 .mortgage-calculator .input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -7847,7 +7847,7 @@ div#mCSB_1_container{
   line-height: 50px;
 }
 
-.mortgage-calculator .input-group-addon, 
+.mortgage-calculator .input-group-addon,
 .mortgage-calculator .input-group-btn {
   white-space: nowrap;
   vertical-align: middle;
@@ -7873,7 +7873,7 @@ div#mCSB_1_container{
   border-collapse: separate;
 }
 
-.mortgage-calculator .btn-group, 
+.mortgage-calculator .btn-group,
 .mortgage-calculator .btn-group-vertical {
   position: relative;
   display: inline-block;
@@ -7886,16 +7886,16 @@ div#mCSB_1_container{
   border-color: #d43f3a;
 }
 
-.mortgage-calculator .btn-group-justified>.btn, 
+.mortgage-calculator .btn-group-justified>.btn,
 .mortgage-calculator .btn-group-justified>.btn-group {
   display: table-cell;
   float: none;
   width: 1%;
 }
 
-.mortgage-calculator [data-toggle=buttons]>.btn input[type=checkbox], 
-.mortgage-calculator [data-toggle=buttons]>.btn input[type=radio], 
-.mortgage-calculator [data-toggle=buttons]>.btn-group>.btn input[type=checkbox], 
+.mortgage-calculator [data-toggle=buttons]>.btn input[type=checkbox],
+.mortgage-calculator [data-toggle=buttons]>.btn input[type=radio],
+.mortgage-calculator [data-toggle=buttons]>.btn-group>.btn input[type=checkbox],
 .mortgage-calculator [data-toggle=buttons]>.btn-group>.btn input[type=radio] {
   position: absolute;
   clip: rect(0,0,0,0);
@@ -7911,8 +7911,8 @@ div#mCSB_1_container{
   height: 50px;
 }
 
-.mortgage-calculator .btn-success:not(:disabled):not(.disabled):active, 
-.mortgage-calculator .btn-success:not(:disabled):not(.disabled).active, 
+.mortgage-calculator .btn-success:not(:disabled):not(.disabled):active,
+.mortgage-calculator .btn-success:not(:disabled):not(.disabled).active,
 .mortgage-calculator .show > .btn-success.dropdown-toggle {
   background-color: #1e7e34 !important;
   border-color: #1c7430 !important;
@@ -8136,7 +8136,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         About-Page
@@ -8267,10 +8267,10 @@ div#mCSB_1_container{
   margin-right: 20px;
 }
 
-.faq-sidebar .form-inner input[type="text"], 
-.faq-sidebar .form-inner input[type="email"], 
-.faq-sidebar .form-inner input[type="tel"], 
-.faq-sidebar .form-inner input[type="number"], 
+.faq-sidebar .form-inner input[type="text"],
+.faq-sidebar .form-inner input[type="email"],
+.faq-sidebar .form-inner input[type="tel"],
+.faq-sidebar .form-inner input[type="number"],
 .faq-sidebar .form-inner textarea {
   position: relative;
   display: block;
@@ -8561,7 +8561,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Gallery-Page
@@ -8685,7 +8685,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         MyProfile-Page
@@ -9180,7 +9180,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Agency-Page
@@ -9204,7 +9204,7 @@ div#mCSB_1_container{
 }
 
 
-/*** 
+/***
 
 ====================================================================
                         Blog-Page

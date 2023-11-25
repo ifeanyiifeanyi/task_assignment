@@ -1,6 +1,6 @@
 @extends('member.layouts.members')
 
-@section('title', auth()->user()->username )
+@section('title', "Dashboard" )
 @section('css')
 
 @endsection

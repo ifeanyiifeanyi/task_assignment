@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class MembersController extends Controller
 {
+
+    public function  dashboard(){
+        return view('member.dashboard');
+    }
     /**
      * Display a listing of the resource.
      */

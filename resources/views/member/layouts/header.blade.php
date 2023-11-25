@@ -6,11 +6,11 @@
                         <p><b>Welcome </b> {{ auth()->user()->username }}</p>
                     </div>
                     <div class="right-column pull-right">
-                       
+
                         <div class="sign-box">
                            @auth
                             <a href="{{ route('member.logout') }}"><i class="fas fa-user"></i>Sign Out</a>
-                               
+
                            @endauth
                         </div>
                     </div>
@@ -21,7 +21,11 @@
                 <div class="outer-box">
                     <div class="main-box">
                         <div class="logo-box">
-                            <figure class="logo"><a href="index.html"><img src="{{ asset('') }}members/assets/images/logo.png" alt=""></a></figure>
+                            <figure class="logo w-25" ><a href="index.html"><img
+                                        width="50" class=""
+                                                                                             src="{{
+                            asset('')
+                            }}logo.png"  alt=""></a></figure>
                         </div>
                         <div class="menu-area clearfix">
                             <!--Mobile Navigation Toggler-->
@@ -41,15 +45,15 @@
                                                 <li><a href="agents-grid.html">Previous</a></li>
                                                 <li><a href="agents-details.html">All</a></li>
                                             </ul>
-                                        </li> 
+                                        </li>
                                         <li><a href="index.html"><span>Login Details</span></a>
-                                           
-                                        </li>  
+
+                                        </li>
                                     </ul>
                                 </div>
                             </nav>
                         </div>
-                       
+
                     </div>
                 </div>
             </div>

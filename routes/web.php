@@ -23,14 +23,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', DashboardController::class)->middleware(['auth'])->name('dashboard');
 
-Route::get('member/dashboard', function () {
-    return view('member.dashboard');
-})->middleware(['auth', 'role:member'])->name('member.dashboard');
 
-//
-//Route::get('admin/dashboard', function () {
-//    return view('admin.dashboard');
-//})->middleware(['auth', 'role:admin'])->name('admin.dashboard');
 
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function(){
@@ -78,8 +71,18 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function(){
 
 });
 
-Route::prefix('member')->controller(MembersController::class)->middleware(['auth', 'role:member'])->group(function(){
-    Route::get('logout', 'logout')->name('member.logout');
+Route::prefix('member')->middleware(['auth', 'role:member'])->group(function(){
+
+    Route::controller(MembersController::class)->group(function (){
+        Route::get('dashboard', 'dashboard')->name('member.dashboard');
+        Route::get('logout', 'logout')->name('member.logout');
+    });
+
+    Route::controller(\App\Http\Controllers\Members\ProfileController::class)->group(function (){
+        Route::get('profile', 'index')->name('member.profile.view');
+        Route::get('update-password', 'ViewUpdatePassword')->name('member.password.view');
+        Route::post('update-password/update', 'updatePassword')->name('member.password.update');
+    });
 });
 
 

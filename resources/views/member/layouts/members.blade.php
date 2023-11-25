@@ -8,7 +8,7 @@
     <title>{{ config('app.name') }} | @yield('title')</title>
 
     <!-- Fav Icon -->
-    <link rel="icon" href="{{ asset('') }}members/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{{ asset('') }}logo.png" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -26,6 +26,9 @@
     <link href="{{ asset('') }}members/assets/css/switcher-style.css" rel="stylesheet">
     <link href="{{ asset('') }}members/assets/css/style.css" rel="stylesheet">
     <link href="{{ asset('') }}members/assets/css/responsive.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
     @yield('css')
 
 </head>
@@ -52,7 +55,7 @@
                 <div class="content-box clearfix">
                     <h1 id="dynamicTime">User Profile </h1>
                     <ul class="bread-crumb clearfix">
-                        <li>User Profile </li>
+                        <li>@yield('title') </li>
                     </ul>
                 </div>
             </div>
@@ -63,12 +66,35 @@
         <!-- sidebar-page-container -->
         <section class="sidebar-page-container blog-details sec-pad-2">
             <div class="auto-container">
+
                 <div class="row clearfix">
                     <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
+                        @php
+                            $profileFields = [
+                                'photo',
+                                'class',
+                                'inter_dioceses',
+                                'school',
+                                'dioceses',
+                                'parish_of_residence',
+                                'home_parish',
+                                'parish',
+                                'address',
+                            ];
+                        @endphp
+                        @if(collect($profileFields)->contains(function ($field) {
+                            return empty(auth()->user()->$field);
+                        }))
+                            <div class="alert alert-danger bg-danger text-center text-white border-0" role="alert">
+                                Please update your profile <br> <strong><a class="btn btn-outline-light waves-effect
+                                waves-light" href="{{route('member.profile.view')}}">UPDATE</a></strong>
+                            </div>
+                        @endif
                         <div class="blog-sidebar">
                             <div class="sidebar-widget post-widget">
                                 <div class="widget-title">
                                     <h4>User Profile </h4>
+
                                 </div>
                                 <div class="post-inner">
                                     <div class="post">
@@ -99,7 +125,7 @@
         <!-- subscribe-section end -->
 
 
-       
+
 
 
 
@@ -135,26 +161,53 @@
             var hours = currentTime.getHours();
             var minutes = currentTime.getMinutes();
             var seconds = currentTime.getSeconds();
-    
+
             // Convert to 12-hour format
             var ampm = hours >= 12 ? 'PM' : 'AM';
             hours = hours % 12 || 12;
-    
+
             // Add leading zeros if needed
             minutes = (minutes < 10 ? "0" : "") + minutes;
             seconds = (seconds < 10 ? "0" : "") + seconds;
-    
+
             // Update the content of the h1 tag
             $("#dynamicTime").text(hours + ":" + minutes + ":" + seconds + " " + ampm);
         }
-    
+
         // Update the time every second
         setInterval(updateTime, 1000);
-    
+
         // Initial call to set the initial time
         updateTime();
     </script>
-    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        @if(Session::has('message'))
+        let type = "{{ Session::get('alert-type','info') }}"
+        switch (type) {
+            case 'info':
+                toastr.info(" {{ Session::get('message') }} ");
+                break;
+
+            case 'success':
+                toastr.success(" {{ Session::get('message') }} ");
+                break;
+
+            case 'warning':
+                toastr.warning(" {{ Session::get('message') }} ");
+                break;
+
+            case 'error':
+                toastr.error(" {{ Session::get('message') }} ");
+                break;
+        }
+        @endif
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
 
     @yield('js')
 </body><!-- End of .page_wrapper -->
