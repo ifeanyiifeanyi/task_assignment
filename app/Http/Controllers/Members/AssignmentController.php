@@ -7,5 +7,9 @@ use Illuminate\Http\Request;
 
 class AssignmentController extends Controller
 {
-    //
+    public function activeAssignment(){
+        $user = auth()->user();
+        $task = $user->tasks()->where('status', 'active')->first();
+        return view('member.assignment.activeAssignment', compact('task'));
+    }
 }

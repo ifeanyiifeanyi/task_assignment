@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\MembersManagementController;
 use App\Http\Controllers\Admin\TaskController;
+use App\Http\Controllers\Members\AssignmentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
@@ -79,7 +80,11 @@ Route::prefix('member')->middleware(['auth', 'role:member'])->group(function(){
     Route::controller(MembersController::class)->group(function (){
         Route::get('dashboard', 'dashboard')->name('member.dashboard');
         Route::get('logout', 'logout')->name('member.logout');
+    });
+
+    Route::controller(AssignmentController::class)->group(function (){
         Route::get('active-assignment', 'activeAssignment')->name('member.active.assignment');
+
     });
 
     Route::controller(\App\Http\Controllers\Members\ProfileController::class)->group(function (){
