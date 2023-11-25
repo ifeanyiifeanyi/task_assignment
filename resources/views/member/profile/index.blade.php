@@ -79,7 +79,8 @@
                                                     <li>
                                                         <i class="fas fa-long-arrow-alt-right"></i>
                                                         <div class="btn-group">
-                                                            <a href="" class="btn-primary text-light shadow btn">Update Profile</a>
+                                                            <a href="{{route('member.view.updateProfile')}}" class="btn-primary text-light shadow
+                                                            btn">Update Profile</a>
                                                             <a href="{{route('member.password.view')}}" class="btn-info text-light shadow
                                                             btn">Update
                                                                 Password</a>

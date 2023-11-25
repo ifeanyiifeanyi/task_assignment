@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Members;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use function auth;
 
 class ProfileController extends Controller
 {
@@ -21,7 +22,7 @@ class ProfileController extends Controller
             'password' => 'required|string|min:6|max:10',
             'new_password' => 'required|confirmed|min:6|max:10||different:password'
         ]);
-        $user = \auth()->user();
+        $user = auth()->user();
 
         if (!Hash::check($request->password, $user->password)){
             $notification = [
@@ -47,5 +48,8 @@ class ProfileController extends Controller
             'alert-type' =>'success',
         ];
         return redirect()->back()->with($notification);
+    }
+    public function viewUpdateProfile(){
+        return view('member.profile.viewUpdateProfile')->with('user', auth()->user());
     }
 }

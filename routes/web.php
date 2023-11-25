@@ -82,6 +82,7 @@ Route::prefix('member')->middleware(['auth', 'role:member'])->group(function(){
         Route::get('profile', 'index')->name('member.profile.view');
         Route::get('update-password', 'ViewUpdatePassword')->name('member.password.view');
         Route::post('update-password/update', 'updatePassword')->name('member.password.update');
+        Route::get('update-profile', 'viewUpdateProfile')->name('member.view.updateProfile');
     });
 });
 
