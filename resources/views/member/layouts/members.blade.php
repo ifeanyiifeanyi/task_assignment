@@ -73,7 +73,6 @@
                             $profileFields = [
                                 'photo',
                                 'class',
-                                'inter_dioceses',
                                 'school',
                                 'dioceses',
                                 'parish_of_residence',

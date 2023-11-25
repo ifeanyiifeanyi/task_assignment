@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\MembersManagementController;
+use App\Http\Controllers\Admin\TaskController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
@@ -17,16 +19,15 @@ use App\Http\Controllers\Members\MembersController;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+Route::view('/','auth.login');
 
 Route::get('/dashboard', DashboardController::class)->middleware(['auth'])->name('dashboard');
 
 
 
-
+// Admin section route management
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function(){
+    // managing admin profile routes
     Route::controller(AdminController::class)->group(function (){
         Route::get('dashboard', 'index')->name('admin.dashboard');
         Route::get('logout', 'logout')->name('admin.logout');
@@ -35,8 +36,8 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function(){
         Route::get('profile/setting', 'settings')->name('admin.setting');
         Route::post('profile/setting/update', 'update_settings')->name('admin.setting.update');
     });
-
-    Route::controller(\App\Http\Controllers\Admin\MembersManagementController::class)->group(function (){
+    // Managing members route in the admin section area routes
+    Route::controller(MembersManagementController::class)->group(function (){
         Route::get('member/create', 'create')->name('admin.member.create');
         Route::post('member/create','store')->name('admin.member.store');
         Route::get('all-members', 'index')->name('admin.member.all');
@@ -45,8 +46,8 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function(){
         Route::post('member-update/{member:username}', 'update')->name('admin.member.update');
         Route::delete('member/delete/{member}', 'destroy')->name('admin.member.delete');
     });
-
-    Route::controller(\App\Http\Controllers\Admin\TaskController::class)->group(function (){
+    // task assignment from the admin section routes
+    Route::controller(TaskController::class)->group(function (){
         Route::get('assign/task', 'create')->name('admin.task.create');
         Route::get('user/task/{user}','showFormForUser')->name('admin.user.task');
         Route::post('assign/task','store')->name('admin.task.store');
@@ -71,11 +72,14 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function(){
 
 });
 
+
+
 Route::prefix('member')->middleware(['auth', 'role:member'])->group(function(){
 
     Route::controller(MembersController::class)->group(function (){
         Route::get('dashboard', 'dashboard')->name('member.dashboard');
         Route::get('logout', 'logout')->name('member.logout');
+        Route::get('active-assignment', 'activeAssignment')->name('member.active.assignment');
     });
 
     Route::controller(\App\Http\Controllers\Members\ProfileController::class)->group(function (){
