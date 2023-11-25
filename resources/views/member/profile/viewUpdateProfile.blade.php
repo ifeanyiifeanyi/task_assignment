@@ -13,7 +13,8 @@
                 <div class="inner-box p-3">
                     <h4>Update Profile Details ... </h4>
                     <hr>
-                    <form action="" method="post" class="default-form" enctype="multipart/form-data">
+                    <form action="{{route('member.update.updateProfile', $user)}}" method="post" class="default-form"
+                          enctype="multipart/form-data">
                         @csrf
 
                         <div class="row">
@@ -23,7 +24,7 @@
                                     <input type="text" name="name" class=" @error('name')  border-danger
                                    @enderror" value="{{old('name', $user->name)}}">
                                     @error('name')
-                                    <span class="invalid-feedback">{{ $message }}</span>
+                                    <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -33,7 +34,8 @@
                                     <input type="text" name="username" class=" @error('username')  border-danger
                                    @enderror" value="{{old('username', $user->username)}}">
                                     @error('username')
-                                    <span class="invalid-feedback">{{ $message }}</span>
+                                    <span class="text-danger">{{ $message }}</span>
+
                                     @enderror
                                 </div>
                             </div>
@@ -45,7 +47,8 @@
                                     <input type="email" name="email" class=" @error('email')  border-danger
                                    @enderror" value="{{old('email', $user->email)}}">
                                     @error('email')
-                                    <span class="invalid-feedback">{{ $message }}</span>
+                                    <span class="text-danger">{{ $message }}</span>
+
                                     @enderror
                                 </div>
                             </div>
@@ -55,7 +58,8 @@
                                     <input type="tel" name="phone" class=" @error('phone')  border-danger
                                    @enderror" value="{{old('phone', $user->phone)}}">
                                     @error('phone')
-                                    <span class="invalid-feedback">{{ $message }}</span>
+                                    <span class="text-danger">{{ $message }}</span>
+
                                     @enderror
                                 </div>
                             </div>
@@ -67,7 +71,8 @@
                                     <input type="text" name="address" class=" @error('address')  border-danger
                                @enderror" value="{{old('address', $user->address)}}">
                                     @error('address')
-                                    <span class="invalid-feedback">{{ $message }}</span>
+                                    <span class="text-danger">{{ $message }}</span>
+
                                     @enderror
                                 </div>
                             </div>
@@ -79,7 +84,8 @@
                                     <input type="text" name="class" class=" @error('class')  border-danger
                                    @enderror" value="{{old('class', $user->class)}}">
                                     @error('class')
-                                    <span class="invalid-feedback">{{ $message }}</span>
+                                    <span class="text-danger">{{ $message }}</span>
+
                                     @enderror
                                 </div>
                             </div>
@@ -89,7 +95,8 @@
                                     <input type="text" name="school" class=" @error('school')  border-danger
                                    @enderror" value="{{old('school', $user->school)}}">
                                     @error('school')
-                                    <span class="invalid-feedback">{{ $message }}</span>
+                                    <span class="text-danger">{{ $message }}</span>
+
                                     @enderror
                                 </div>
                             </div>
@@ -125,7 +132,8 @@
                                     <input type="text" name="dioceses" class=" @error('dioceses')  border-danger
                                    @enderror" value="{{old('dioceses', $user->dioceses)}}">
                                     @error('dioceses')
-                                    <span class="invalid-feedback">{{ $message }}</span>
+                                    <span class="text-danger">{{ $message }}</span>
+
                                     @enderror
                                 </div>
                             </div>
@@ -135,7 +143,8 @@
                                     <input type="text" name="parish" class=" @error('parish')  border-danger
                                    @enderror" value="{{old('parish', $user->parish)}}">
                                     @error('parish')
-                                    <span class="invalid-feedback">{{ $message }}</span>
+                                    <span class="text-danger">{{ $message }}</span>
+
                                     @enderror
                                 </div>
                             </div>
@@ -143,17 +152,19 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Profile Photo</label>
-                                    <input type="file" name="photo" class=" @error('photo')  border-danger
+                                    <input onchange="readURL(this);" type="file" name="photo" class=" @error('photo')  border-danger
                                    @enderror">
                                     @error('photo')
-                                    <span class="invalid-feedback">{{ $message }}</span>
+                                    <span class="text-danger">{{ $message }}</span>
+
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 text-center">
                                 <div class="form-group">
-                                    <label>Parish</label> <br>
-                                    <img src="{{$user->photo ? asset($user->photo) : asset('no_image.jpg')}}" alt=""
+
+                                    <label>Current Profile Photo</label> <br>
+                                    <img id="currentImage" src="{{$user->photo ? asset($user->photo) : asset('no_image.jpg')}}" alt=""
                                          class="img-fluid
                                     img-responsive w-50
                                     shadow">
@@ -185,5 +196,17 @@
 
 
 @section('js')
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                let reader = new FileReader();
 
+                reader.onload = function (e) {
+                    $('#currentImage').attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 @endsection

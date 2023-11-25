@@ -20,14 +20,18 @@
                                 <div class="agent-details-content">
                                     <div class="agents-block-one">
                                         <div class="inner-box mr-0" style="box-shadow: none">
-                                            <figure class="image-box"><img
-                                                    src="{{$user->photo ? asset($user->photo) : asset('no_image.jpg')}}"
-                                                    alt=""></figure>
-                                            <div class="content-box">
-                                                <div class="upper clearfix">
-                                                    <div class="title-inner pull-left">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                <img class="img-fluid img-thumbnail" src="{{$user->photo ? asset($user->photo) :
+                                                asset
+                                                ('no_image
+                                                .jpg')}}"
+                                                    alt="profile">
+                                                </div>
+                                                <div class="col-md-8 w-100">
+                                                    <div class="">
                                                         <h4>{{$user->name}}</h4>
-                                                        <span class="designation">
+                                                        <span class="">
                                                             {{$user->username}},
                                                             @if($user->inter_dioceses === 0)
                                                                 <em>Diocesan Member</em>
@@ -37,57 +41,74 @@
                                                             @endif
                                                         </span>
                                                     </div>
+                                                    <hr>
 
-                                                </div>
-
-                                                <ul class="info clearfix mr-0">
-                                                    <li><i class="fab fa fa-envelope"></i><a
-                                                            href="mailto:{{$user->email}}">{{$user->email}}</a></li>
-                                                    <li><i class="fab fa fa-phone"></i><a
-                                                            href="tel:{{$user->phone}}">{{$user->phone}}</a>
+                                                <ul class="list-group ">
+                                                    <li class="mb-3">
+                                                        <i class="fab fa fa-envelope mr-2 text-light bg-primary
+                                                        rounded p-1"></i>
+                                                        <a
+                                                            href="mailto:{{$user->email}}"> {{$user->email}}
+                                                        </a>
                                                     </li>
-                                                    <li>
-                                                        <i class="fas fa-address-card"></i>
+                                                    <li  class="mb-3">
+                                                        <i class="fab fa fa-phone mr-2 text-light bg-primary
+                                                        rounded p-1"></i>
+                                                        <a
+                                                            href="tel:{{$user->phone}}"> {{$user->phone}}
+                                                        </a>
+                                                    </li>
+                                                    <li  class="mb-3">
+                                                        <i class="fas fa-address-card mr-2 text-light bg-dark
+                                                        rounded p-1"></i>
                                                         {{$user->address ?? 'Not available'}}
                                                     </li>
-                                                    <li>
-                                                        <i class="fas fa-hospital"></i>
+                                                    <li  class="mb-3">
+                                                        <i class="fas fa-hospital mr-2 text-light bg-dark
+                                                        rounded p-1"></i>
                                                         {{$user->parish ?? 'Not available'}}
                                                     </li>
-                                                    <li>
-                                                        <i class="fas fa-warehouse"></i>
+                                                    <li  class="mb-3">
+                                                        <i class="fas fa-warehouse mr-2 text-light bg-dark
+                                                        rounded p-1"></i>
                                                         {{$user->dioceses ?? 'Not available'}}
                                                     </li>
                                                     @if($user->inter_dioceses === 0)
-                                                        <li>
-                                                            <i class="fas fa-igloo"></i>
+                                                        <li  class="mb-3">
+                                                            <i class="fas fa-igloo mr-2 text-light bg-dark
+                                                        rounded p-1"></i>
                                                             {{$user->home_parish ?? 'Not available'}}
                                                         </li>
-                                                        <li>
-                                                            <i class="fas fa-hospital-alt"></i>
+                                                        <li  class="mb-3">
+                                                            <i class="fas fa-hospital-alt mr-2 text-light bg-dark
+                                                        rounded p-1"></i>
                                                             {{$user->parish_of_residence ?? 'Not available'}}
                                                         </li>
                                                     @endif
-                                                    <li>
-                                                        <i class="fas fa-university"></i>
+                                                    <li  class="mb-3">
+                                                        <i class="fas fa-university mr-2 text-light bg-dark
+                                                        rounded p-1"></i>
                                                         {{$user->school ?? 'Not available'}}
                                                     </li>
-                                                    <li>
-                                                        <i class="fas fa-scroll"></i>
+                                                    <li  class="mb-3">
+                                                        <i class="fas fa-scroll mr-2 text-light bg-dark
+                                                        rounded p-1"></i>
                                                         {{$user->class ?? 'Not available'}}
                                                     </li>
-                                                    <li>
-                                                        <i class="fas fa-long-arrow-alt-right"></i>
-                                                        <div class="btn-group">
-                                                            <a href="{{route('member.view.updateProfile')}}" class="btn-primary text-light shadow
-                                                            btn">Update Profile</a>
-                                                            <a href="{{route('member.password.view')}}" class="btn-info text-light shadow
-                                                            btn">Update
-                                                                Password</a>
-                                                        </div>
 
-                                                    </li>
                                                 </ul>
+                                                    <hr>
+                                                <div  class="mb-3">
+                                                    <div class="btn-group">
+                                                        <a href="{{route('member.view.updateProfile')}}" class="btn-primary text-light shadow
+                                                        btn">Update Profile</a>
+                                                        <a href="{{route('member.password.view')}}" class="btn-info text-light shadow
+                                                        btn">Update
+                                                            Password</a>
+                                                    </div>
+
+                                                </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -165,7 +165,8 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="photo" class="form-label">Profile image</label>
-                                <input type="file" class="form-control @error('photo')  is-invalid @enderror" id="photo" name="photo">
+                                <input onchange="readURL(this);" type="file" class="form-control @error('photo')  is-invalid @enderror"
+                                        id="photo" name="photo">
                                 @error('photo')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
@@ -173,8 +174,9 @@
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3 text-center">
-                                <label for="lastname" class="form-label">Current Image</label> <br>
-                                <img class="img-responsive img-fluid w-50" src="{{ $user->photo ? asset($user->photo) : asset('no_image.jpg') }}" alt="">
+                                <label for="photo" class="form-label">Current Image</label> <br>
+                                <img id="currentImage" class="img-responsive img-fluid w-50" src="{{ $user->photo ? asset
+                                ($user->photo) : asset('no_image.jpg') }}" alt="">
                             </div>
                         </div> <!-- end col -->
                     </div> <!-- end row -->
