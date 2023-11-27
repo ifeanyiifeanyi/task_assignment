@@ -12,4 +12,11 @@ class AssignmentController extends Controller
         $task = $user->tasks()->where('status', 'active')->first();
         return view('member.assignment.activeAssignment', compact('task'));
     }
+
+    public function allPreviousAssignments(){
+        $user = auth()->user();
+        $tasks = $user->tasks()->where('status', '<>', 'active')->get();
+//        dd($tasks);
+        return view('member.assignment.allAssignments', compact('tasks'));
+    }
 }

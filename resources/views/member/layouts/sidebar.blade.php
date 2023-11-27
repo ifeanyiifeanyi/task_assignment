@@ -24,9 +24,19 @@
 
                 </a>
             </li>
-            <li><a href="{{route('member.active.assignment')}}"><i class="fa fa-list-alt" aria-hidden="true"></i></i> Assignments </a></li>
+            <li>
+                <a href="{{route('member.active.assignment')}}">
+                    <i class="fa fa-list-alt" aria-hidden="true"></i>
+                    Assignment
+                    @if(\App\Models\Task::where('user_id', auth()->user()->id)->where('status', 'active')->exists())
+                        <span class="badge badge-success p-1 shadow">
+                            Active
+                        </span>
+                    @endif
+                </a>
+            </li>
             <li><a href="blog-details.html"><i class="fa fa-bells" aria-hidden="true"></i> Notifications </a></li>
-            <li><a href="blog-details.html"><i class="fa fa-tasks" aria-hidden="true"></i> Activities </a></li>
+            <li><a href="{{route('member.all.allPreviousAssignments')}}"><i class="fa fa-tasks" aria-hidden="true"></i> Activities </a></li>
             <li><a href="{{ route('member.logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout </a></li>
         </ul>
     </div>

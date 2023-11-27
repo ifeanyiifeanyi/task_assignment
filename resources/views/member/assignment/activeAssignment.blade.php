@@ -16,6 +16,7 @@
                         <h3>Active Assignment</h3>
                         <hr>
                         <div class="table-responsive">
+                            @if($task)
                             <table class="table table-hover">
                                   <tr>
                                       <th class="text-info">Title</th>
@@ -55,12 +56,12 @@
                                     </td>
                                 </tr>
                             </table>
+                            @else
+                            <div class="text-info">No active assignment, try again later.
+                                <a href="{{route('member.profile.view')}}" class="btn btn-outline-info">Profile</a>
+                            </div>
+                            @endif
                         </div>
-
-
-
-
-
 
                     </div>
                 </div>

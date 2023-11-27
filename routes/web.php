@@ -84,6 +84,7 @@ Route::prefix('member')->middleware(['auth', 'role:member'])->group(function(){
 
     Route::controller(AssignmentController::class)->group(function (){
         Route::get('active-assignment', 'activeAssignment')->name('member.active.assignment');
+        Route::get('all-previous-assignment', 'allPreviousAssignments')->name('member.all.allPreviousAssignments');
 
     });
 
