@@ -70,6 +70,11 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function(){
 
     });
 
+    Route::controller(\App\Http\Controllers\Admin\ManageNotificationController::class)->group(function(){
+        Route::get('notifications', 'index')->name('admin.notification.view');
+        Route::get('notification/create', 'create')->name('admin.notification.create');
+        Route::post('notification/store', 'store')->name('admin.notification.store');
+    });
 
 });
 

@@ -54,6 +54,12 @@
                         <span> Profile </span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('admin.notification.view') }}">
+                        <i class="mdi mdi-bell"></i>
+                        <span> Notification </span>
+                    </a>
+                </li>
 
 
                 <li>
