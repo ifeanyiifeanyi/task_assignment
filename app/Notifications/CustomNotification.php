@@ -13,13 +13,15 @@ class CustomNotification  extends Notification implements ShouldQueue
 {
     use Queueable;
     public $content;
+    public $title;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct($content)
+    public function __construct($content, $title)
     {
         $this->content = $content;
+        $this->title = $title;
     }
 
     /**
@@ -41,7 +43,7 @@ class CustomNotification  extends Notification implements ShouldQueue
 //        NotificationModel::create(['content' => $this->content]);
         Log::info('Sending notification to: ' . $notifiable->email);
         return (new MailMessage)
-                    ->line('There is a new notification in your dashboard')
+                    ->line($this->title)
                     ->action('View', url('/login'))
                     ->line('Thank you for using our application!');
     }

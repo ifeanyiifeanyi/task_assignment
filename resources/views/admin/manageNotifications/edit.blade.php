@@ -1,6 +1,6 @@
 @extends('admin.layouts.admin')
 
-@section('title', 'Create Notifications')
+@section('title', 'Edit Notification')
 @section('css')
 
 @endsection
@@ -10,14 +10,14 @@
             <div class="card bg-gradient shadow">
                 <a href="{{route('admin.notification.view')}}" class="btn btn-primary w-25">View notifications</a>
                 <div class="card-body">
-                    <form action="{{route('admin.notification.store')}}" method="post">
+                    <form action="{{route('admin.notification.update', $notification)}}" method="post">
                         @csrf
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title </label>
                                 <input type="text"  class="form-control @error('title')  is-invalid @enderror"
-                                           id="title" placeholder="Title ..." name="title" value="{{
-                                       old('title') }}">
+                                       id="title" placeholder="Title ..." name="title" value="{{
+                                       old('title', $notification->title) }}">
                                 @error('title')
                                 <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
@@ -27,8 +27,7 @@
                             <div class="mb-3">
                                 <label for="content" class="form-label">Notification Content </label>
                                 <textarea  class="form-control @error('content')  is-invalid @enderror"
-                                           id="editor" placeholder="Description ..." name="content" value="{{
-                                       old('content') }}"></textarea>
+                                           id="editor" placeholder="Description ..." name="content">{{old('content', $notification->content) }}</textarea>
                                 @error('content')
                                 <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror

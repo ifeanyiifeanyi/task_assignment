@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ManageNotificationController;
 use App\Http\Controllers\Admin\MembersManagementController;
 use App\Http\Controllers\Admin\TaskController;
 use App\Http\Controllers\Members\AssignmentController;
@@ -70,10 +71,14 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function(){
 
     });
 
-    Route::controller(\App\Http\Controllers\Admin\ManageNotificationController::class)->group(function(){
+    Route::controller(ManageNotificationController::class)->group(function(){
         Route::get('notifications', 'index')->name('admin.notification.view');
         Route::get('notification/create', 'create')->name('admin.notification.create');
         Route::post('notification/store', 'store')->name('admin.notification.store');
+        Route::get('notification/{notice}', 'edit')->name('admin.notification.edit');
+        Route::post('notification/{notice}/update', 'update')->name('admin.notification.update') ;
+        Route::delete('notification/delete/{notify}', 'destroy')->name('admin.notification.delete');
+        Route::get('notification/show/{notify}', 'show')->name('admin.notification.show');
     });
 
 });

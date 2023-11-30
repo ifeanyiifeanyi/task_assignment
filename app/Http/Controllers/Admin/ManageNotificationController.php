@@ -43,4 +43,54 @@ class ManageNotificationController extends Controller
 
         return redirect()->route('admin.notification.view')->with($notification);
     }
+
+    public function edit($notification){
+        $notification  = NotificationModel::findOrFail($notification) ;
+//        dd($notification);
+        return view('admin.manageNotifications.edit', compact('notification'));
+    }
+    public function update(Request $request, $id){
+        $request->validate([
+            'content' => 'required|string',
+            'title' => 'required|string'
+        ]);
+        $users = User::where('role', 'member')->get();
+        $notice = NotificationModel::findOrFail($id);
+
+
+        $content = $request->input('content');
+        $title   = $request->input('title');
+
+        $notification = new CustomNotification($content, $title);
+
+        Notification::send($users, $notification);
+        $notice->update(
+            [
+                'content' => $request->input('content'),
+                'title' => $request->input('title')
+            ]);
+        $notification = [
+            'message'    => 'Notification updated successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('admin.notification.view')->with($notification);
+    }
+
+    public function show($id)
+    {
+        $notice = NotificationModel::findOrFail($id);
+        return view('admin.manageNotifications.show', compact('notice'));
+    }
+
+    public function destroy($id)
+    {
+        NotificationModel::findOrFail($id)->delete();
+        $notification = [
+            'message'    => 'Notification deleted successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('admin.notification.view')->with($notification);
+    }
 }
