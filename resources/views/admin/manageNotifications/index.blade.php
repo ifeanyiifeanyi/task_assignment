@@ -16,17 +16,24 @@
                             <thead>
                             <tr>
                                 <th>s/n</th>
+                                <th>Title</th>
                                 <th>Date</th>
-                                <th>Details</th>
+                                <th>Actions</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($notifications as $notification)
                                       <tr>
                                           <td>{{$loop->iteration}}</td>
+                                          <td>{{$notification->title}}</td>
                                           <td>{{$notification->created_at->format('F j, Y')}}</td>
+
                                           <td>
-                                              <a href="" class="btn btn-info">View Details</a>
+                                              <div class="btn-group">
+                                                  <a href="" class="btn btn-primary">View Details</a>
+                                                  <a href="" class="btn btn-info">edit</a>
+                                                  <a href="" class="btn btn-danger">Del</a>
+                                              </div>
                                           </td>
                                       </tr>
                             @endforeach
