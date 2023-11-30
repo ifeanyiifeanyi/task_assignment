@@ -50,8 +50,10 @@
 
 
         <!--Page Title-->
-        <section class="page-title centred" style="background-image: url({{ asset("") }}members/assets/images/background/page-title-5.jpg);">
-            <div class="auto-container">
+        <section class="page-title centred" style="background-image: url('{{ asset('Holy-Trinity-Basilica-1.jpg')
+        }}'); background-size: cover; background-position: center">
+
+        <div class="auto-container">
                 <div class="content-box clearfix">
                     <h1 id="dynamicTime">User Profile </h1>
                     <ul class="bread-crumb clearfix">

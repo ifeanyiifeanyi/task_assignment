@@ -21,7 +21,7 @@
                 <div class="outer-box">
                     <div class="main-box">
                         <div class="logo-box">
-                            <figure class="logo w-25" ><a href="index.html"><img
+                            <figure class="logo w-25" ><a href="{{route('member.dashboard')}}"><img
                                         width="50" class=""
                                                                                              src="{{
                             asset('')
@@ -37,16 +37,14 @@
                             <nav class="main-menu navbar-expand-md navbar-light">
                                 <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                                     <ul class="navigation clearfix">
-                                        <li><a href="index.html"><span>Profile</span></a>
+                                        <li><a href="{{route('member.profile.view')}}"><span>Profile</span></a>
                                         </li>
-                                        <li class="dropdown"><a href="index.html"><span>Activities</span></a>
+                                        <li class="dropdown"><a href="!#"><span>Activities</span></a>
                                             <ul>
-                                                <li><a href="agents-list.html">Active</a></li>
-                                                <li><a href="agents-grid.html">Previous</a></li>
-                                                <li><a href="agents-details.html">All</a></li>
+                                                <li><a href="{{route('member.active.assignment')}}">Assignments</a></li>
+                                                <li><a href="{{route('member.notice.view')}}">Notifications</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="index.html"><span>Login Details</span></a>
 
                                         </li>
                                     </ul>
