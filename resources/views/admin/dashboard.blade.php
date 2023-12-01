@@ -87,6 +87,25 @@
             </div>
         </div> <!-- end card-->
     </div> <!-- end col -->
+    <div class="col-md-6 col-xl-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="avatar-sm bg-info rounded shadow-lg">
+                            <i class="fe-bell avatar-title font-22 text-white"></i>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="text-end">
+                            <h3 class="text-dark my-1"><span data-plugin="counterup">{{$notifications}}</span></h3>
+                            <p class="text-muted mb-1">Notification Records</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end card-->
+    </div> <!-- end col -->
 </div>
 <!-- end row -->
 

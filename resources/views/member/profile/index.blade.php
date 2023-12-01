@@ -23,10 +23,7 @@
                                             <div class="row">
                                                 <div class="col-md-4">
                                                 <img class="img-fluid img-thumbnail" src="{{$user->photo ? asset($user->photo) :
-                                                asset
-                                                ('no_image
-                                                .jpg')}}"
-                                                    alt="profile">
+                                                asset('no_image.jpg')}}" alt="profile">
                                                 </div>
                                                 <div class="col-md-8 w-100">
                                                     <div class="">

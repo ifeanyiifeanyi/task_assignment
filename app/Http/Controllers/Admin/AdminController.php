@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\NotificationModel;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,9 +19,10 @@ class AdminController extends Controller
         $user_admin_count =  User::where('role', 'admin')->count();
         $active_task = Task::where('status', 'active')->count();
         $tasks = Task::count();
+        $notifications = NotificationModel::count();
 
         return view('admin.dashboard',
-            compact('user_not_admin_count', 'user_admin_count', 'active_task', 'tasks'));
+            compact('user_not_admin_count', 'user_admin_count', 'active_task', 'tasks', 'notifications'));
     }
     /**
      * Display the specified resource.

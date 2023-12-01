@@ -1,5 +1,5 @@
 
-<div class="sidebar-widget category-widget">
+<div class="sidebar-widget category-widget mb-4">
     <div class="widget-title">
         <h4>Category</h4>
     </div>

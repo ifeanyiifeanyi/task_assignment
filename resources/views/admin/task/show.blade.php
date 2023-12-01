@@ -60,8 +60,10 @@
                                                     <td>{{$task->title}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th class="text-primary">Description: </th>
-                                                    <td>{!! nl2br($task->description) !!}</td>
+                                                    <td colspan="2">
+                                                        <h3>Description</h3>
+                                                        {!! nl2br($task->description) !!}
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <th class="text-primary">Start Date: </th>

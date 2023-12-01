@@ -72,6 +72,25 @@
                             </div>
 
                         </div> <!-- end row -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label for="email_description" class="form-label">Description
+                                        <span class="text-info text-sm">Content goes to mail notification as
+                                                additional information, but <b>Optional</b> </span>
+                                    </label>
+                                    <textarea  class="form-control @error('email_description')  is-invalid
+                                        @enderror"
+                                               id="editor1" placeholder="This email description is optional"
+                                               name="email_description" value="">{{
+                                       e(nl2br(($task->email_description ?? "Please login to your dashboard, for
+                                       updated information regarding your posting" ))) }}</textarea>
+                                    @error('email_description')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="col-md-6">
@@ -131,6 +150,14 @@
                 console.error( error );
             } );
     </script>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor1' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+
 
 
 @endsection

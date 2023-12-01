@@ -79,6 +79,7 @@ class TaskController extends Controller
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',
             'description' => 'required|string',
+            'email_description'  => 'nullable|string',
             'title' => 'required|string|max:255',
             'start_date' => 'required|date',
             'stop_date' => 'nullable|date|after:start_date',
@@ -105,6 +106,7 @@ class TaskController extends Controller
         $task = $user->tasks()->create([
             'title' => $request->title,
             'description' => $request->description,
+            'email_description' => $request->email_description ?? "Please login to your dashboard, for more information regarding your posting",
             'user_id' => $request->user_id,
             'end_date' => $request->end_date,
             'start_date' => $request->start_date,
@@ -136,6 +138,7 @@ class TaskController extends Controller
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',
             'description' => 'required|string',
+            'email_description'  => 'nullable|string',
             'title' => 'required|string|max:255',
             'start_date' => 'required|date',
             'stop_date' => 'nullable|date|after:start_date',
@@ -154,6 +157,8 @@ class TaskController extends Controller
         $task->update([
             'user_id' => $request->input('user_id'),
             'title' => $request->input('title'),
+            'email_description' => $request->email_description ?? "Please login to your dashboard, for updated information regarding your posting",
+
             'description' => $request->input('description'),
             'start_date' => $request->input('start_date'),
             'end_date' => $request->input('end_date'),

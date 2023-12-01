@@ -4,8 +4,9 @@ use App\Http\Controllers\Admin\ManageNotificationController;
 use App\Http\Controllers\Admin\MembersManagementController;
 use App\Http\Controllers\Admin\TaskController;
 use App\Http\Controllers\Members\AssignmentController;
+use App\Http\Controllers\Members\ProfileController;
+use App\Http\Controllers\Members\ViewNotificationController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Members\MembersController;
@@ -85,7 +86,7 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function(){
 
 
 
-Route::prefix('member')->middleware(['auth', 'role:member'])->group(function(){
+Route::prefix('member')->middleware(['auth','verified', 'role:member'])->group(function(){
 
     Route::controller(MembersController::class)->group(function (){
         Route::get('dashboard', 'dashboard')->name('member.dashboard');
@@ -95,13 +96,14 @@ Route::prefix('member')->middleware(['auth', 'role:member'])->group(function(){
     Route::controller(AssignmentController::class)->group(function (){
         Route::get('active-assignment', 'activeAssignment')->name('member.active.assignment');
         Route::get('all-previous-assignment', 'allPreviousAssignments')->name('member.all.allPreviousAssignments');
+        Route::get('previous-assignment-details/{details}', 'previousAssignmentDetails')->name('member.previousAssignmentDetails.view');
     });
-    Route::controller(\App\Http\Controllers\Members\ViewNotificationController::class)->group(function(){
+    Route::controller(ViewNotificationController::class)->group(function(){
         Route::get('notice', 'index')->name('member.notice.view');
         Route::get('notice/{notice}', 'show')->name('member.notice.show');
     });
 
-    Route::controller(\App\Http\Controllers\Members\ProfileController::class)->group(function (){
+    Route::controller(ProfileController::class)->group(function (){
         Route::get('profile', 'index')->name('member.profile.view');
         Route::get('update-password', 'ViewUpdatePassword')->name('member.password.view');
         Route::post('update-password/update', 'updatePassword')->name('member.password.update');

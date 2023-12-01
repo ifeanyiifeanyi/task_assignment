@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Members;
 
 use App\Http\Controllers\Controller;
+use App\Models\NotificationModel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +12,9 @@ class MembersController extends Controller
 {
 
     public function  dashboard(){
-        return view('member.dashboard');
+        $notifications = NotificationModel::count();
+        $task = auth()->user()->tasks()->where('status', 'active')->count();
+        return view('member.dashboard', compact('notifications', 'task'));
     }
     /**
      * Display a listing of the resource.

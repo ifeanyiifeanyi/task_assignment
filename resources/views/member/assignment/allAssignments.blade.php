@@ -23,13 +23,15 @@
                                         <th class="text-primary">Title</th>
                                         <th class="text-primary">Start Date</th>
                                         <th class="text-primary">End Date</th>
-                                        <th class="text-primary">Additional Files</th>
+                                        <th class="text-primary">Files</th>
+                                        <th>View</th>
                                     </tr>
                                     @foreach($tasks as $task)
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
                                             <td>
-                                                <a href="" class="link">
+                                                <a href="{{route('member.previousAssignmentDetails.view', $task)}}"
+                                                   class="link">
                                                     {{$task->title}}
                                                 </a>
                                             </td>
@@ -37,12 +39,16 @@
                                             <td>{{$task->end_date->format('F j, Y')}}</td>
                                             <td>
                                                 @if($task->additional_file)
-                                                    <a href="{{ asset($task->additional_file) }}" target="_blank">View FILE</a>
+                                                    <a href="{{ asset($task->additional_file) }}" target="_blank">View</a>
 
                                                 @else
                                                     No files
                                                 @endif
 
+                                            </td>
+                                            <td>
+                                                <a href="{{route('member.previousAssignmentDetails.view', $task)}}"
+                                                   class="btn btn-primary">View</a>
                                             </td>
                                         </tr>
                                     @endforeach
