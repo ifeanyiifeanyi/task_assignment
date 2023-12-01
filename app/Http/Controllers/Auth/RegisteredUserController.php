@@ -32,6 +32,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'inter_dioceses' => ['required'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'phone' => ['required', 'string', 'max:255', 'unique:'.User::class],
             'username' => ['required', 'string', 'max:255', 'unique:'.User::class],
@@ -40,6 +41,7 @@ class RegisteredUserController extends Controller
 
         $user = User::create([
             'name' => $request->name,
+            'inter_dioceses' => $request->inter_dioceses,
             'username' => $request->username,
             'phone' => $request->phone,
             'email' => $request->email,

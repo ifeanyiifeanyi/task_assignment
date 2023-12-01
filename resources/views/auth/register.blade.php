@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}" class="shadow">
+    <form method="POST" action="{{ route('register') }}" class="">
         @csrf
 
         <!-- Name -->
@@ -14,6 +14,17 @@
             <x-input-label for="username" :value="__('Username')" />
             <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('username')" class="mt-2" />
+        </div>
+        <!-- Diocesan status -->
+        <div class="mt-4">
+            <x-input-label for="inter_dioceses" :value="__('Diocesan Status')" />
+            <select id="inter_dioceses" name="inter_dioceses" class="block mt-1 w-full" required>
+                <option value="" disabled selected>Select Diocesan Status</option>
+                <option value="0" {{ old('inter_dioceses') === '0' ? 'selected' : '' }}>Diocesan Member</option>
+                <option value="1" {{ old('inter_dioceses') === '1' ? 'selected' : '' }}>Inter Diocesan Member</option>
+                <!-- Add more options as needed -->
+            </select>
+            <x-input-error :messages="$errors->get('inter_dioceses')" class="mt-2" />
         </div>
         <!-- Email Address -->
         <div class="mt-4">
