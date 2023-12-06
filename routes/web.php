@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ManageNotificationController;
 use App\Http\Controllers\Admin\MembersManagementController;
 use App\Http\Controllers\Admin\TaskController;
+use App\Http\Controllers\Members\ApostolicWorkController;
 use App\Http\Controllers\Members\AssignmentController;
 use App\Http\Controllers\Members\ProfileController;
 use App\Http\Controllers\Members\ViewNotificationController;
@@ -110,8 +111,18 @@ Route::prefix('member')->middleware(['auth','verified', 'role:member'])->group(f
         Route::get('update-profile', 'viewUpdateProfile')->name('member.view.updateProfile');
         Route::post('update-profile/{member}', 'updateProfile')->name('member.update.updateProfile');
     });
+
+    Route::controller(ApostolicWorkController::class)->group(function (){
+        Route::get('apostolic-history', 'index')->name('apostolic.history.view');
+        Route::get('apostolic-history/create', 'create')->name('apostolic.history.create');
+        Route::post('apostolic-history/save', 'save')->name('apostolic.history.save');
+        Route::get('apostolic-history/{history}', 'show')->name('apostolic.history.show');
+        Route::get('apostolic-history/{history}/edit', 'edit')->name('apostolic.history.edit');
+        Route::post('apostolic-history/{history}/update', 'update')->name('apostolic.history.update');
+        Route::get('apostolic-history/{history}/destroy', 'destroy')->name('apostolic.history.destroy');
+    });
 });
 
-
+//php artisan queue:work
 
 require __DIR__.'/auth.php';

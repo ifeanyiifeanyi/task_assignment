@@ -37,6 +37,11 @@
             </li>
             <li><a href="{{route('member.notice.view')}}"><i class="fa fa-bells" aria-hidden="true"></i> Notifications </a></li>
             <li><a href="{{route('member.all.allPreviousAssignments')}}"><i class="fa fa-tasks" aria-hidden="true"></i> Activities </a></li>
+
+            <li><a href="{{route('apostolic.history.view')}}"><i class="fa fa-tasks"
+                                                                            aria-hidden="true"></i> Apostolic work
+                    History
+                </a></li>
             <li><a href="{{ route('member.logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout </a></li>
         </ul>
     </div>

@@ -21,6 +21,10 @@ class User extends Authenticatable   implements  MustVerifyEmail
     public function tasks(){
         return $this->hasMany(Task::class);
     }
+    public function apostolic()
+    {
+        return $this->hasMany(ApostolicWork::class);
+    }
 
 //    public function getAuthIdentifierName(){
 //        return $this->name;
