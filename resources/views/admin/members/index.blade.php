@@ -46,7 +46,11 @@
                                     @endif
                                 </td>
                                 <td>{{ Str::ucfirst($user->username) }}</td>
-                                <td>{{$user->email}}</td>
+                                <td>
+                                    <p>{{$user->email}} </p>
+                                    <p><a class="link-btn" href="{{route('admin.SingleHistory.work', $user)}}">Work
+                                            History</a></p>
+                                </td>
                                 <td>{{$user->phone}}</td>
                                 <td>
                                     <div class="btn-group mr-2" role="group" aria-label="First group">

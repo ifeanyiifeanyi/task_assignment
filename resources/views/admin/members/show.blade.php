@@ -148,6 +148,28 @@
 
                                                 </tbody>
                                             </table>
+                                             <h4>Previous Apostolic Work History</h4>
+                                                @if($user->apostolic->count())
+                                                <table class="table table-hover">
+                                                   <tr>
+                                                       <th>Organization</th>
+                                                       <th>Dates</th>
+                                                   </tr>
+                                                    @foreach($user->apostolic as $duty)
+                                                        <tr>
+                                                            <td>{{Str::title($duty->organization)}}</td>
+                                                            <td>
+                                                                <p>{{$duty->start_date->format('F j, Y')}}</p>
+                                                                <p>{{$duty->end_date->format('F j, Y')}}</p>
+                                                                <p>{{$duty->duration_in_words}}</p>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </table>
+                                                @else
+                                                    <p class="alert alert-primary">Apostolic Work History Not
+                                                        Available</p>
+                                                @endif
 
                                         </div>
 

@@ -76,6 +76,9 @@
                             <li>
                                 <a href="{{route('admin.member.all')}}">All Memebers</a>
                             </li>
+                            <li>
+                                <a href="{{route('admin.history.work')}}">Work History</a>
+                            </li>
                         </ul>
                     </div>
                 </li>

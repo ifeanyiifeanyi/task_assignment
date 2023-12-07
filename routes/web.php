@@ -49,6 +49,8 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function(){
         Route::get('member-edit/{member:username}', 'edit')->name('admin.member.edit');
         Route::post('member-update/{member:username}', 'update')->name('admin.member.update');
         Route::delete('member/delete/{member}', 'destroy')->name('admin.member.delete');
+        Route::get('work-history', 'history')->name('admin.history.work');
+        Route::get('work-history/{member}/user', 'SingleHistory')->name('admin.SingleHistory.work');
     });
     // task assignment from the admin section routes
     Route::controller(TaskController::class)->group(function (){

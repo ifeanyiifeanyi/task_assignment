@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ApostolicWork;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -105,8 +106,10 @@ class MembersManagementController extends Controller
      */
     public function show(string $username)
     {
-        $user = User::where('username',$username)->first();
+        $user = User::where('username', $username)->with('apostolic')->first();
+//
         return view('admin.members.show')->with('user', $user);
+
     }
 
     /**
@@ -194,5 +197,19 @@ class MembersManagementController extends Controller
             ];
             return redirect()->route('admin.member.all')->with($notification);
         }
+    }
+
+
+    public function history(){
+        $users = ApostolicWork::with('user')->latest()->get();
+        return view('admin.members.history', compact('users')) ;
+    }
+
+    public function SingleHistory($user)
+    {
+        $user = User::findOrfail($user);
+        $history = $user->apostolic()->get();
+//        dd($history);
+        return view('admin.members.singleHistory', compact('history'));
     }
 }
